@@ -11,12 +11,14 @@
             <span class="products-card__bottom-price">
                 {{price}} ₽
             </span>
-            <button class="products-card__bottom-btn" id="add-basket"></button>
+            <IconButton ><PlusWhite /></IconButton>
         </div>
     </div>
 </template>
 <script>
     import { toRefs } from 'vue';
+    import IconButton from './IconButton.vue';
+    import PlusWhite from '../assets/images/plus.svg';
 
     export default {
         name: 'ProductCard',
@@ -26,6 +28,10 @@
             title: String,
             description: String,
             price: Number,
+        },
+        components: {
+            IconButton,
+            PlusWhite
         },
         setup(props) {
             const {description,id, preview, price, title} = toRefs(props);

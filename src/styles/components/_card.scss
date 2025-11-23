@@ -60,36 +60,5 @@
       font-weight: 500;
       font-size: 17px;
     }
-
-    &-btn {
-      position: relative;
-      width: 30px;
-      height: 30px;
-      background-color: transparent;
-      border-radius: 50%;
-      border: 1px solid #FFFFFF;
-      cursor: pointer;
-      transition: 0.5s;
-
-      &:hover {
-        background-color: #D58C51;
-        border-color: #D58C51;
-      }
-
-      &::before, &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 12px;
-        height: 2px;
-        background-color: #FFFFFF
-      }
-
-      &::after {
-        transform: translate(-50%, -50%) rotate(90deg);
-      }
-    }
   }
 }

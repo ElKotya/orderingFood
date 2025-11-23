@@ -7,21 +7,22 @@
           3 товара <br>
           на сумму 3 500 ₽  
         </span>
-        <img src="../assets/images/basket.svg" alt="" class="header__inner-basket" id="basket">
+        <IconButton size="lg" type="secondary" ><Basket /></IconButton>
       </div>
-      <TextButton text="Выйти" />
+      <TextButton text="Выйти" type="secondary" />
     </div>
   </header>
 </template>
 <script>
+import IconButton from './IconButton.vue';
 import TextButton from './TextButton.vue';
+import Basket from '../assets/images/basket.svg'
 
 export default {
   name: 'MainHeader',
   components: {
-    TextButton
+    TextButton, IconButton, Basket
   }
-
 }
 </script>
 <style>
