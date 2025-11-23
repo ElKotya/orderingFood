@@ -1,0 +1,18 @@
+.main {
+  padding-top: 52px;
+  background-color: #161516;
+  color: #FFFFFF;
+
+  .products-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 35px 20px;
+    height: calc(100vh - 177px);
+    overflow: auto;
+    padding-bottom: 67px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+}
