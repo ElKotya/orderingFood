@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 75px;
+  padding-bottom: 75px;
 
   .title {
     font-family: 'Montserrat Semibold';
@@ -14,7 +14,7 @@
   &__inner, &__inner-products {
     display: flex;
     align-items: center;
-    gap: 45px;
+    gap: 20px;
   }
 
   &__inner {

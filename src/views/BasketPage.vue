@@ -13,6 +13,7 @@
       <section class="product-list">
         <BasketCard
           v-for="props in PRODUCTS"
+          :key="props.id"
           :description="props.description"
           :id="props.id"
           :preview="props.preview"
