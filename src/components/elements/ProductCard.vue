@@ -1,38 +1,39 @@
 <template>
-    <div class="products-card">
-        <img :src='preview' alt="product image" class="products-card__preview">
-        <h2 class="products-card__title">
-            {{title}}
-        </h2>
-        <p class="products-card__description">
-            {{description}}
-        </p>
-        <div class="products-card__bottom">
-            <span class="products-card__bottom-price">
-                {{price}} ₽
-            </span>
-            <IconButton ><PlusWhite /></IconButton>
-        </div>
+  <div class="products-card" @click="onHandleClick">
+    <img :src='preview' alt="product image" class="products-card__preview">
+    <h2 class="products-card__title">
+      {{title}}
+    </h2>
+    <p class="products-card__description">
+        {{description}}
+    </p>
+    <div class="products-card__bottom">
+      <span class="products-card__bottom-price">
+        {{price}} ₽
+      </span>
+      <IconButton ><PlusWhite /></IconButton>
     </div>
+  </div>
 </template>
-<script>
-    import PlusWhite from '../icons/plus-icon.vue';
-    import IconButton from '../ui/IconButton.vue';
+<script setup>
+  import { useRouter } from 'vue-router';
+  import PlusWhite from '../icons/plus-icon.vue';
+  import IconButton from '../ui/IconButton.vue';
 
-    export default {
-        name: 'ProductCard',
-        props: {
-            id: Number,
-            preview: String,
-            title: String,
-            description: String,
-            price: Number,
-        },
-        components: {
-            IconButton,
-            PlusWhite
-        },
-    }
+  const props = defineProps({
+    id: Number,
+    preview: String,
+    title: String,
+    description: String,
+    price: Number,
+  })
+
+  const router = useRouter();
+
+  const onHandleClick = () => {
+    router.push(`/product/${props.id}`)
+  }
+
 </script>
 <style lang="scss" scoped>
 .products-card {
@@ -43,6 +44,7 @@
   max-width: 310px;
   border: 1px solid #D58C51;
   transition: 0.5s;
+  cursor: pointer;
 
   &:hover {
     color: #D58C51;
