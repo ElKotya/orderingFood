@@ -4,8 +4,8 @@
     <div class="header__inner">
       <div class="header__inner-products">
         <span class="header__inner-info">
-          3 товара <br>
-          на сумму 3 500 ₽
+          {{ store.getCount }} {{productWord}} <br>
+          на сумму {{ store.getPrice }} ₽
         </span>
         <RouterLink to="/basket"><IconButton size="lg" type="secondary" ><Basket /></IconButton></RouterLink>
       </div>
@@ -18,6 +18,14 @@ import IconButton from '../ui/IconButton.vue';
 import TextButton from '../ui/TextButton.vue';
 import Basket from '../icons/basket-icon.vue';
 import LeftArrow from '../icons/left-arrow.vue';
+import { normalize_count_form } from '../../shared/utils';
+import { computed } from 'vue';
+import { useBasketStore } from '@/stores/productList';
+
+
+const store = useBasketStore();
+
+const productWord = computed(() => normalize_count_form(store.getCount, ['товар', 'товара', 'товаров']))
 
 
 </script>

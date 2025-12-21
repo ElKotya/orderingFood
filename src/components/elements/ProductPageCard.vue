@@ -6,14 +6,20 @@
       <p class="info_description">Не следует, однако забывать, что консультация с широким активом представляет собой интересный эксперимент проверки новых предложений. Не следует, однако забывать, что сложившаяся структура организации позволяет оценить значение новых предложений. Разнообразный и богатый опыт начало повседневной работы по формированию позиции требуют от нас анализа позиций.Не следует, однако забывать, что консультация с широким активом представляет собой интересный эксперимент проверки новых предложений. Не следует, однако забывать, что сложившаяся структура организации позволяет оценить значение новых предложений.</p>
       <div class="info_footer">
         <span>1 600 ₽</span>
-        <TextButton text="В корзину" />
+        <TextButton @click="onHandleAddClick" text="В корзину" />
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import TextButton from '../ui/TextButton.vue';
+import { useBasketStore } from '@/stores/productList';
 
+import TextButton from '../ui/TextButton.vue';
+  const store = useBasketStore();
+  const onHandleAddClick = (e) => {
+    e.stopPropagation();
+    store.addToBasket({});
+  }
 </script>
 <style lang="scss" scoped>
   .wrapper {
