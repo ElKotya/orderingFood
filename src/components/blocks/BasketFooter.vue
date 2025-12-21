@@ -7,22 +7,18 @@
                     <span class="summary">
                         Заказ на сумму:
                     </span>
-                    <span class="sum">6 220 ₽</span>
+                    <span class="sum">{{ store.getPrice }} ₽</span>
                 </div>
                 <TextButton text="Оформить заказ" type="primary" />
             </div>
         </div>
     </div>
 </template>
-<script>
+<script setup>
+import { useBasketStore } from '@/stores/productList';
 import TextButton from '../ui/TextButton.vue'
 
-export default {
-    name: 'BasketFooter',
-    components: {
-        TextButton
-    }
-}
+const store = useBasketStore();
 </script>
 <style lang="scss" scoped>
     .footer-wrapper {

@@ -10,28 +10,30 @@
             <span class="basket-card__right-price">
                 {{price}} ₽
             </span>
-            <IconButton type="ghost" ><Cancel /></IconButton>
+            <IconButton @click="onHandleCancel" type="ghost" ><Cancel /></IconButton>
         </div>
     </div>
 </template>
-<script>
-    import Cancel from '../icons/cancel-icon.vue';
-    import IconButton from '../ui/IconButton.vue';
+<script setup>
+  import { useBasketStore } from '@/stores/productList';
+  import Cancel from '../icons/cancel-icon.vue';
+  import IconButton from '../ui/IconButton.vue';
 
-    export default {
-        name: 'ProductCard',
-        props: {
-            id: Number,
-            preview: String,
-            title: String,
-            price: Number,
-        },
-        components: {
-            IconButton,
-            Cancel
-        },
+  const props = defineProps({
+    id: Number,
+    preview: String,
+    title: String,
+    price: Number,
+  })
 
-    }
+  const store = useBasketStore();
+
+  const onHandleCancel = () => {
+    console.log(props.id);
+
+    store.removeFromBasket(props.id)
+  }
+
 </script>
 <style lang="scss" scoped>
     .basket-card {

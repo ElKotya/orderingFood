@@ -12,6 +12,7 @@
       <section class="products-list">
         <ProductCard
           v-for="props in PRODUCTS"
+          :key="props.id"
           :description="props.description"
           :id="props.id"
           :preview="props.preview"
@@ -19,7 +20,7 @@
           :title="props.title"
         />
       </section>
-      
+
     </div>
   </main>
 </template>

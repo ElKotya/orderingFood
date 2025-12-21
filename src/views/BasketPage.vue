@@ -1,9 +1,10 @@
 <script setup>
-    import BasketCard from '../components/elements/BasketCard.vue';
-    import BasketFooter from '../components/blocks/BasketFooter.vue';
-    import BasketHeader from '../components/blocks/BasketHeader.vue';
-    import { PRODUCTS } from '../shared/constants';
+  import BasketCard from '../components/elements/BasketCard.vue';
+  import BasketFooter from '../components/blocks/BasketFooter.vue';
+  import BasketHeader from '../components/blocks/BasketHeader.vue';
+  import { useBasketStore } from '@/stores/productList';
 
+  const store = useBasketStore();
 </script>
 
 <template>
@@ -12,7 +13,7 @@
       <BasketHeader />
       <section class="product-list">
         <BasketCard
-          v-for="props in PRODUCTS"
+          v-for="props in store.getBasket"
           :key="props.id"
           :description="props.description"
           :id="props.id"

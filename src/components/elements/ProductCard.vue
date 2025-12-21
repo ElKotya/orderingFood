@@ -11,7 +11,7 @@
       <span class="products-card__bottom-price">
         {{price}} ₽
       </span>
-      <IconButton ><PlusWhite /></IconButton>
+      <IconButton @click="onHandleAddClick" ><PlusWhite /></IconButton>
     </div>
   </div>
 </template>
@@ -19,6 +19,8 @@
   import { useRouter } from 'vue-router';
   import PlusWhite from '../icons/plus-icon.vue';
   import IconButton from '../ui/IconButton.vue';
+  import { useBasketStore } from '@/stores/productList';
+
 
   const props = defineProps({
     id: Number,
@@ -27,6 +29,11 @@
     description: String,
     price: Number,
   })
+  const store = useBasketStore();
+  const onHandleAddClick = (e) => {
+    e.stopPropagation();
+    store.addToBasket(props);
+  }
 
   const router = useRouter();
 
