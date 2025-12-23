@@ -1,24 +1,33 @@
 <template>
   <div class="wrapper">
-    <img src='../../assets/images/product.png' alt="product image" class="image">
+    <!-- не получилось динамически вставить путь к картинке -->
+    <img src='@/assets/images/product.png' alt="product image" class="image">
     <div class="info">
-      <h2 class="info_title">Свиные ребрышки на гриле</h2>
-      <p class="info_description">Не следует, однако забывать, что консультация с широким активом представляет собой интересный эксперимент проверки новых предложений. Не следует, однако забывать, что сложившаяся структура организации позволяет оценить значение новых предложений. Разнообразный и богатый опыт начало повседневной работы по формированию позиции требуют от нас анализа позиций.Не следует, однако забывать, что консультация с широким активом представляет собой интересный эксперимент проверки новых предложений. Не следует, однако забывать, что сложившаяся структура организации позволяет оценить значение новых предложений.</p>
+      <h2 class="info_title">{{ product.title }}</h2>
+      <p class="info_description">{{ product.description }}</p>
       <div class="info_footer">
-        <span>1 600 ₽</span>
+        <span>{{ product.price }} ₽</span>
         <TextButton @click="onHandleAddClick" text="В корзину" />
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { useBasketStore } from '@/stores/productList';
-
+import { useBasketStore, useProductListStore } from '@/stores/productList';
 import TextButton from '../ui/TextButton.vue';
+import { useRoute } from 'vue-router';
+import { ref } from 'vue';
+
   const store = useBasketStore();
+  const productListStore = useProductListStore();
+  const route = useRoute();
+  const id = route.params.id;
+  const product = ref(productListStore.getProductById(id))
+
   const onHandleAddClick = (e) => {
     e.stopPropagation();
-    store.addToBasket({});
+
+    store.addToBasket(product.value);
   }
 </script>
 <style lang="scss" scoped>

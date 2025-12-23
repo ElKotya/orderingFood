@@ -30,8 +30,8 @@
     price: Number,
   })
   const store = useBasketStore();
-  const onHandleAddClick = (e) => {
-    e.stopPropagation();
+  const onHandleAddClick = (event) => {
+    event.stopPropagation();
     store.addToBasket(props);
   }
 

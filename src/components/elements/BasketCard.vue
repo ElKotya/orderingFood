@@ -29,8 +29,6 @@
   const store = useBasketStore();
 
   const onHandleCancel = () => {
-    console.log(props.id);
-
     store.removeFromBasket(props.id)
   }
 
